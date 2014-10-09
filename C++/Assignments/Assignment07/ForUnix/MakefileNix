@@ -1,0 +1,28 @@
+#############################################################################
+# Makefile for building: LeapYear program
+#############################################################################
+
+####### Compiler, tools and options
+
+CXX           = g++
+CXXFLAGS      = -c -O2 -Wall
+LINK          = g++
+LINKFLAGS     = -o 
+TARGET        = leapYearTest
+
+OBJECTS = test.o functions.o date.o
+
+$(TARGET) : $(OBJECTS)
+	$(LINK) $(OBJECTS) $(LINKFLAGS)$(TARGET)
+	
+test.o : test.cpp
+	$(CXX) $(CXXFLAGS)  test.cpp 
+	
+date.o : date.cpp
+	$(CXX) $(CXXFLAGS)  date.cpp
+
+functions.o : functions.cpp
+	$(CXX) $(CXXFLAGS)  functions.cpp
+
+clean:
+	rm -rf $(OBJECTS) $(TARGET) *.core

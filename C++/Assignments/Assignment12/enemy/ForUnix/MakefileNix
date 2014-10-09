@@ -1,0 +1,28 @@
+#############################################################################
+# Makefile for building: Enemy(Assignment12) program
+#############################################################################
+
+####### Compiler, tools and options
+
+CXX           = g++
+CXXFLAGS      = -c -O2 -Wall
+LINK          = g++
+LINKFLAGS     = -o 
+TARGET        = enemy
+
+OBJECTS = boss.o main.o enemy.o
+
+$(TARGET) : $(OBJECTS)
+	$(LINK) $(OBJECTS) $(LINKFLAGS)$(TARGET)
+	
+boss.o : boss.cpp
+	$(CXX) $(CXXFLAGS)  boss.cpp 
+	
+main.o : main.cpp
+	$(CXX) $(CXXFLAGS)  main.cpp
+
+enemy.o : enemy.cpp
+	$(CXX) $(CXXFLAGS)  enemy.cpp
+
+clean:
+	rm -rf $(OBJECTS) $(TARGET) *.core

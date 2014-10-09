@@ -1,0 +1,6 @@
+C++ Assignment 12
+
+Projects Book (the small one), Chapter 11, Exercise 1, page 164.
+
+Build a Visual Studio 2010 project for your answer.
+

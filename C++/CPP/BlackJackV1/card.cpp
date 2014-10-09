@@ -1,0 +1,30 @@
+#include <iostream>
+#include "card.h"
+
+using namespace std;
+
+Card::Card(rank r, suit s, bool ifu) : m_Rank(r), m_Suit(s), m_IsFaceUp(ifu)
+{}
+
+int Card::GetValue() const
+{
+	//if cards is face down , its vaalue is 0
+	int value = 0;
+	if (m_IsFaceUp)
+	{
+		//value is number showing on card
+		value = m_Rank;
+		//value is 10 for face cards
+		if (value > 10)
+		{
+			value = 10;
+		}
+
+	}
+	return value;
+}
+
+void Card::Flip()
+{
+	m_IsFaceUp = !(m_IsFaceUp);    // FLIPING THE CARD
+}

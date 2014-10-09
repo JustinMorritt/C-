@@ -1,0 +1,31 @@
+#############################################################################
+# Makefile for building: swordCrossBow program
+#############################################################################
+
+####### Compiler, tools and options
+
+CXX           = g++
+CXXFLAGS      = -c -O2 -Wall
+LINK          = g++
+LINKFLAGS     = -o 
+TARGET        = swordCrossBow
+
+OBJECTS = main.o Sword.o Weapon.o Crossbow.o
+
+$(TARGET) : $(OBJECTS)
+	$(LINK) $(OBJECTS) $(LINKFLAGS)$(TARGET)
+	
+main.o : main.cpp
+	$(CXX) $(CXXFLAGS)  main.cpp 
+	
+Sword.o : Sword.cpp
+	$(CXX) $(CXXFLAGS)  Sword.cpp
+
+Weapon.o : Weapon.cpp
+	$(CXX) $(CXXFLAGS)  Weapon.cpp
+	
+Crossbow.o : Crossbow.cpp
+	$(CXX) $(CXXFLAGS)  Crossbow.cpp
+
+clean:
+	rm -rf $(OBJECTS) $(TARGET) *.core

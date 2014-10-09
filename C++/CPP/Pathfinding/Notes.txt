@@ -1,0 +1,53 @@
+Pathfinding Notes
+
+
+
+- directed graph "50's and 60's"
+- have a point that represents a start and end end point ..
+- Main guy who tackled this , Edsger dijkstra
+- A*  or A Star , almost like dijkstra's.. version of an algorithm
+
+Some terminology-  
+---Tiles are called Cells, Also called Node.
+---Path - as travelling from one cell to an adjacent cell. (horizontal ,vertical, diagonal)
+---Path Weight - is a cost of travelling a path.
+---Route - a set of paths that represents the cheapest route between two cells.
+---Route weight - the combined path weights for each route.
+---We start by keeping two lists , an open list and a closed list.
+---Find the path  with the lowest value.. (just exploring)
+
+dijkstra's -- this is A-star with a Zero Heuristic value
+Switches in Comand Promt:
+--   -w 7 -e 6 -s 4502(seed) -q 1(add this to make even path weights, otherwise they are random.)
+--   7= width 6 = height
+--   -i 5  == highest value -l == lowest value
+
+Same for A-star 
+A-Star Adds an element called : Heuristic
+--- simplest algorithm is called the Manhattan distance algorithm
+---What you are after is an Admissible Heuristic , that ends up with a correct result.
+
+
+
+A-star PseudoCode 
+- Make Start Cell  -- Current Cell
+Current cell is Start
+While end of current cell does not equal end
+	For each path from the current cell 
+		construct a route based on current cells route and path
+			if the route to the end cell in the path is not in the open list 
+				add it to the list 
+			else 
+				if the route weight of the new route is less then the route weight of the existing route 
+					replace the route in the open list with the new route 
+				end if
+			end if 
+	end loop 
+	if open list is empty 
+		No route between start and finish 
+			exit
+		end if
+	from open list choose route with smallest weight + end cell heuristic value
+		remove route from open list and put on closed list
+	end loop
+optimal path is last on closed list.

@@ -1,0 +1,22 @@
+Multi-Threading 
+
+Program: file that can start a process 
+Process:  Running software
+Thread: A sequence of execution of instructions.
+
+How We Multi Thread : Different for every OS ... we are discussing the windows .
+
+Function to create a thread:
+
+//CREATE THESE PROTOTYPES
+DWORD = unsigned long
+DWORD WINAPI InThread(void*);
+
+HANDLE hInThread = CreateThread(NULL, 0 , InThread, &inPass, &inThreadID);  //Security Descriptors
+						0 = Stack Size , Pointer To a function(InThread)
+
+if(inThreadID == 0)
+{
+	cerr << " Could not create thread." << endl
+	return 1;
+}

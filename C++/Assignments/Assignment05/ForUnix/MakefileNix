@@ -1,0 +1,21 @@
+###########################
+# Makefile for factors program
+###########################
+
+CPP = g++
+CPP_FLAGS = -O2 -c -Wall
+LINK = g++
+LINK_FLAGS = -o 
+TARGET = fibonacci
+OBJ_FILES = fibonacci.o
+
+$(TARGET) : $(OBJ_FILES)
+	$(LINK) $(LINK_FLAGS)$(TARGET) $(OBJ_FILES)
+
+fibonacci.o : fibonacci.cpp
+	$(CPP) $(CPP_FLAGS) fibonacci.cpp
+
+clean:
+	rm -f $(OBJ_FILES) $(TARGET)
+	
+

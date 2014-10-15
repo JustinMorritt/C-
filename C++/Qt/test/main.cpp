@@ -5,6 +5,7 @@
 #include <QTextStream>
 #include <QFile>
 #include <QList>
+#include <QTime>
 #include <QDir>
 
 using namespace std;
@@ -15,6 +16,7 @@ int main(int argc, char *argv[])
 
     cout << "\n\n\nHELLO ???\n\n\n";
 
+//FILE INPUT / OUTPUT
     QFile output("Output");
     QFile input("hashOutput.txt");
     QString line; //LINE FOR INPUT
@@ -47,13 +49,10 @@ int main(int argc, char *argv[])
     QTextStream out(stdout);
     QList<QString> List;
 
-    QDir dir;
-    QStringList filters;
-    filters << "-" << ">" << "=" << ":";
-    dir.setNameFilters(filters);
 
 
 
+//LIST'S Qts Containers..
     List << "Q" << "A" << "Die" << "Blaw" << "Zebra" << "Justin";
 
     qSort(List);
@@ -65,13 +64,36 @@ int main(int argc, char *argv[])
 
     out << QDir::homePath() << "\n\n\n\n";
 
- //   QFileInfoList List = dir.entryInfoList();
 
+//CONCATINATION
+    QString Ret = "";
     for(int i = 0; i < List.size(); ++i)
     {
-        QFileInfo fileInfo = List.at(i);
-        out << QString("%1").arg(fileInfo.fileName()) << endl;
+        Ret += List.at(i);
     }
+    out << Ret << "\n\n";
+
+
+
+//FILTER FILE EXTENTIONS
+    QDir dir;
+    QStringList filters;
+    filters << ".h" << ".txt";
+    dir.setNameFilters(filters);
+    QFileInfoList List2 = dir.entryInfoList();
+
+    for(int i = 0; i < List2.size(); ++i)
+    {
+        QFileInfo fileInfo = List2.at(i);
+        out << QString("%1").arg(fileInfo.fileName());
+        out << endl;
+    }
+
+
+
+    QTime currentTime = QTime::currentTime();
+    QString currentTimeStr = currentTime.toString(Qt::LocalDate);
+    out << currentTimeStr << endl;
 
 
 
